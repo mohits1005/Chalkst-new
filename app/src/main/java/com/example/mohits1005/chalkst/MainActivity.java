@@ -50,15 +50,13 @@ import static java.security.AccessController.getContext;
 public class MainActivity extends AppCompatActivity {
     private Context mContext;
 
-    RelativeLayout mRelativeLayout;
-    private RecyclerView mRecyclerView;
-    //private Button mButtonAdd;
     @BindView(R.id.btn_add)
     Button mButtonAdd;
-
-    private ImageButton middleButton;
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.ib_start)
+    ImageButton middleButton;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     List<list_element> myList;
     private int PICK_IMAGE_REQUEST = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -77,11 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mContext = getApplicationContext();
-        mRelativeLayout = (RelativeLayout) findViewById(R.id.rl);
-        //mButtonAdd = (Button) findViewById(R.id.btn_add);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         myList = new ArrayList<>();
-        middleButton = (ImageButton) findViewById(R.id.ib_start);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
         // Initialize a new instance of RecyclerView Adapter instance
         mAdapter = new NewAdapter(getApplication(),myList);
@@ -125,16 +119,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public ImageView mImageView;
-            public Button mRemoveButton;
-            public RelativeLayout mRelativeLayout;
-            public ImageButton mgallery;
-
+            @BindView(R.id.iv)
+            ImageView mImageView;
+            @BindView(R.id.rl)
+            RelativeLayout mRelativeLayout;
+            @BindView(R.id.ib_gallery)
+            ImageButton mgallery;
             public ViewHolder(View v) {
                 super(v);
-                mImageView = (ImageView) v.findViewById(R.id.iv);
-                mRelativeLayout = (RelativeLayout) v.findViewById(R.id.rl);
-                mgallery = (ImageButton) v.findViewById(R.id.ib_gallery);
+                ButterKnife.bind(this,v);
             }
         }
 
