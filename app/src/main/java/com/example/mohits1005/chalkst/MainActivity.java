@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -38,6 +39,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static android.R.attr.color;
 import static android.R.attr.width;
@@ -66,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
     int image_insert_flag = 0;
     private Bitmap bitmap;
     Button addBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mContext = getApplicationContext();
         mRelativeLayout = (RelativeLayout) findViewById(R.id.rl);
         mButtonAdd = (Button) findViewById(R.id.btn_add);
