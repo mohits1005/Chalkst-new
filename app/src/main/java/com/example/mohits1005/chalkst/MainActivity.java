@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout mRelativeLayout;
     private RecyclerView mRecyclerView;
-    private Button mButtonAdd;
+    //private Button mButtonAdd;
+    @BindView(R.id.btn_add)
+    Button mButtonAdd;
+
     private ImageButton middleButton;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Random mRandom = new Random();
-    private Button previewButton;
-    private Button returnButton;
     List<list_element> myList;
     private int PICK_IMAGE_REQUEST = 1;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mContext = getApplicationContext();
         mRelativeLayout = (RelativeLayout) findViewById(R.id.rl);
-        mButtonAdd = (Button) findViewById(R.id.btn_add);
+        //mButtonAdd = (Button) findViewById(R.id.btn_add);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         myList = new ArrayList<>();
         middleButton = (ImageButton) findViewById(R.id.ib_start);
