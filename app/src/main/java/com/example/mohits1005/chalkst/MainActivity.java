@@ -146,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
             if (mDataSet.get(holder.getAdapterPosition()).getImage() != null) {
                 holder.mImageView.setVisibility(View.VISIBLE);
                 holder.mgallery.setVisibility(View.INVISIBLE);
-                //holder.mRemoveButton.setVisibility(View.INVISIBLE);
                 holder.mImageView.setImageBitmap(mDataSet.get(holder.getAdapterPosition()).getImage());
 
             } else {
@@ -181,9 +180,11 @@ public class MainActivity extends AppCompatActivity {
                 image_insert_flag = 1;
                 //Getting the Bitmap from Gallery
                 bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(), filePath);
+                int nh = (int) (bitmap.getHeight() * (512.0 / bitmap.getWidth()));
+                Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
                 //Setting the Bitmap to ImageView
                 list_element object = myList.get(pos);
-                object.setImage(bitmap);
+                object.setImage(scaled);
                 mAdapter.notifyDataSetChanged();
                 ImageButton gallery = (ImageButton) findViewById(R.id.ib_gallery);
                 gallery.setVisibility(View.GONE);
